@@ -9,6 +9,7 @@ readme = "README.md"
 python = "^3.9"
 virtualenv = "^20.17.1"
 requests = "^2.28.2"
+pytest = "^7.2.1"
 
 
 [build-system]

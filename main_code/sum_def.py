@@ -29,36 +29,3 @@ def finding_ides():
         for ides in dates:
             list_of_id.append(dict_of_dates[ides])
     return list_of_id
-
-
-def creating_classes_from_id(id_, name_of_typo, class_):
-    file = getting_json_from_web()
-    for item in file:
-        if item['id'] == id_:
-            time_data = item['date'].split('T')
-            date_ = time_data[0].split('-')
-            normal_date = f"{date_[2]}.{date_[1]}.{date_[0]}"
-            disc = item['description']
-            from_ = item['from']
-            to = item['to']
-            summ = item["operationAmount"]["amount"]
-            cur = item["operationAmount"]["currency"]["name"]
-            name_of_typo = class_(normal_date, disc, from_, to, summ, cur)
-    return name_of_typo
-
-
-def everything_for_class(id_):
-    file = getting_json_from_web()
-    for item in file:
-        if item['id'] == id_:
-            print(item)
-            time_data = item['date'].split('T')
-            date_ = time_data[0].split('-')
-            normal_date = f"{date_[2]}.{date_[1]}.{date_[0]}"
-            disc = item['description']
-            if 'from' in item:
-                from_ = item['from']
-            to = item['to']
-            summ = item["operationAmount"]["amount"]
-            cur = item["operationAmount"]["currency"]["name"]
-    return normal_date, disc, from_, to, summ, cur

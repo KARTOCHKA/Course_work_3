@@ -2,12 +2,14 @@ import requests
 
 
 def getting_json_from_web():
+    """Ф-я получает список словарей по ссылке"""
     file = requests.get("https://www.jsonkeeper.com/b/FGAS")
     file = file.json()
     return file
 
 
 def finding_ides():
+    """Ф-я находит id последних операций и возвращает их в правильном порядке"""
     list_of_id = []
     dates = []
     dict_of_dates = {}

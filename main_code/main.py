@@ -1,7 +1,9 @@
 from sum_def import finding_ides, getting_json_from_web, key_in_list
 
-file = getting_json_from_web()
-list_of_id = finding_ides()
+link = "https://www.jsonkeeper.com/b/FGAS"
+
+file = getting_json_from_web(link)
+list_of_id = finding_ides(link)
 for idefic in list_of_id:
     """Перебираем каждый id и находим по нему всю информацию"""
     for item in file:

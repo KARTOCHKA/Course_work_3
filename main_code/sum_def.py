@@ -1,19 +1,19 @@
 import requests
 
 
-def getting_json_from_web():
+def getting_json_from_web(link):
     """Ф-я получает список словарей по ссылке"""
-    file = requests.get("https://www.jsonkeeper.com/b/FGAS")
+    file = requests.get(link)
     file = file.json()
     return file
 
 
-def finding_ides():
+def finding_ides(link, quantity=5, sort_type=True):
     """Ф-я находит id последних операций и возвращает их в правильном порядке"""
     list_of_id = []
     dates = []
     dict_of_dates = {}
-    file = getting_json_from_web()
+    file = getting_json_from_web(link)
     for index in file:
         if len(index) != 0 and index['state'] == "EXECUTED":
             date_month_num = index['date'].split('T')
@@ -23,8 +23,8 @@ def finding_ides():
             dates.append(full_date)
             dict_of_dates[full_date] = index_id
 
-    dates.sort(reverse=True)
-    dates = dates[0:5]
+    dates.sort(reverse=sort_type)
+    dates = dates[0:quantity]
     while len(list_of_id) < 5:
         for ides in dates:
             list_of_id.append(dict_of_dates[ides])

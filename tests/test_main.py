@@ -1,7 +1,15 @@
-from main_code.sum_def import getting_json_from_web
+from main_code.sum_def import getting_json_from_web, finding_ides
 
-test_link = "https://jsonkeeper.com/b/MBOG"
+test_link = "https://www.jsonkeeper.com/b/MBOG"
+main_link = "https://www.jsonkeeper.com/b/FGAS"
 
 
 def test_getting_json_from_web():
-    assert getting_json_from_web(test_link) == [{"key":"test","number":1234,"sort_str":"string","long_str":"long_string"},{"key1":"test1","number1":1}]
+    pass
+
+
+def test_for_finding_ides():
+    assert finding_ides(main_link, 10, False) == [317987878, 634356296, 260972664, 147815167, 893507143, 893507143,
+                                                  286706711, 988276204, 361044570, 921286598]
+    assert finding_ides(main_link, 2, True) == [863064926, 114832369]
+    assert finding_ides(main_link, 1, False) == [317987878]

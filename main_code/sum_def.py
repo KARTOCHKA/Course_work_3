@@ -28,4 +28,16 @@ def finding_ides():
             list_of_id.append(dict_of_dates[ides])
     return list_of_id
 
-print(finding_ides())
+
+def key_in_list(key, list_):
+    if key in list_:
+        from_ = list_['from'].split(' ')
+        if len(from_) == 3:
+            from_num = from_[2]
+            abs_from = f"{from_[0]} {from_[1]} {from_num[:4]} {from_num[4:6]}** **** {from_num[-4:]} -> "
+        else:
+            from_num = from_[1]
+            abs_from = f"{from_[0]} {from_num[:4]} {from_num[4:6]}** **** {from_num[-4:]} -> "
+    else:
+        abs_from = ''
+    return abs_from
